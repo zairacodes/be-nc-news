@@ -27,7 +27,7 @@ describe("GET /api/topics", () => {
         });
       });
   });
-  test("400: responds with Not Found for a non-existent endpoint", () => {
+  test("404: responds with Not Found for a non-existent endpoint", () => {
     return request(app)
       .get("/api/not-an-endpoint")
       .expect(404)
