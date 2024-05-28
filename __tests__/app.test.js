@@ -49,3 +49,40 @@ describe("GET /api/topics", () => {
       });
   });
 });
+
+describe("GET /api/articles/:article_id", () => {
+  test("200: responds with a single article by article_id", () => {
+    return request(app)
+      .get("/api/articles/7")
+      .expect(200)
+      .then(({ body }) => {
+        expect(body.article).toMatchObject({
+          author: "icellusedkars",
+          title: "Z",
+          article_id: 7,
+          body: "I was hungry.",
+          topic: "mitch",
+          created_at: "2020-01-07T14:08:00.000Z",
+          votes: 0,
+          article_img_url:
+            "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700",
+        });
+      });
+  });
+  test("404: responds with Not Found for a non-existent article_id", () => {
+    return request(app)
+      .get("/api/articles/99999")
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Not Found");
+      });
+  });
+  test("400: responds with Bad Request for an invalid article_id", () => {
+    return request(app)
+      .get("/api/articles/invalid-id")
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Bad Request");
+      });
+  });
+});
