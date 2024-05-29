@@ -1,4 +1,7 @@
-const { checkCommentsExists } = require("../models/comments.models");
+const {
+  checkCommentsExists,
+  insertComment,
+} = require("../models/comments.models");
 
 exports.getCommentsByArticleId = (req, res, next) => {
   const { article_id } = req.params;
@@ -9,6 +12,21 @@ exports.getCommentsByArticleId = (req, res, next) => {
     .then((resolvedPromises) => {
       const comments = resolvedPromises[0];
       res.status(200).send({ comments });
+    })
+    .catch(next);
+};
+
+exports.postCommentForArticle = (req, res, next) => {
+  const { article_id } = req.params;
+  const { username, body } = req.body;
+
+  if (!username || !body) {
+    return res.status(400).send({ msg: "Bad Request" });
+  }
+
+  insertComment(article_id, username, body)
+    .then((newComment) => {
+      res.status(201).send({ comment: newComment });
     })
     .catch(next);
 };
