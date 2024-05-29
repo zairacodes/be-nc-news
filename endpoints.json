@@ -66,5 +66,16 @@
         }
       ]
     }
+  },
+  "POST /api/articles/:article_id/comments": {
+    "description": "serves an array of a newly created comment for an article",
+    "exampleResponse": {
+      "comment": [
+        {
+          "username": "catslover",
+          "body": "I really love cats"
+        }
+      ]
+    }
   }
 }
