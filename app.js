@@ -8,13 +8,18 @@ const {
 } = require("./controllers/articles.controllers");
 const {
   getCommentsByArticleId,
+  postCommentForArticle,
 } = require("./controllers/comments.controllers");
+
+app.use(express.json());
 
 app.get("/api", getEndpoints);
 app.get("/api/topics", getTopics);
 app.get("/api/articles", getArticles);
 app.get("/api/articles/:article_id", getArticleById);
 app.get("/api/articles/:article_id/comments", getCommentsByArticleId);
+
+app.post("/api/articles/:article_id/comments", postCommentForArticle);
 
 app.all("*", (req, res) => {
   res.status(404).send({ msg: "Not Found" });
