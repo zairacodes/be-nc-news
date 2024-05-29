@@ -199,3 +199,48 @@ describe("POST /api/articles/:article_id/comments", () => {
       });
   });
 });
+
+describe("PATCH /api/articles/:article_id", () => {
+  test("200: responds with the updated article object, with votes incremented when inc_votes is positive", () => {
+    const updatedArticle = {
+      inc_votes: 1,
+    };
+    return request(app)
+      .patch("/api/articles/1")
+      .send(updatedArticle)
+      .expect(200)
+      .then(({ body }) => {
+        expect(body.article).toMatchObject({
+          article_id: 1,
+          votes: 101,
+        });
+      });
+  });
+  test("200: responds with the updated article object, with votes decremented when inc_votes is negative", () => {
+    const updatedArticle = {
+      inc_votes: -100,
+    };
+    return request(app)
+      .patch("/api/articles/1")
+      .send(updatedArticle)
+      .expect(200)
+      .then(({ body }) => {
+        expect(body.article).toMatchObject({
+          article_id: 1,
+          votes: 0,
+        });
+      });
+  });
+  test("400: responds with an error message for an invalid inc_votes", () => {
+    const invalidArticle = {
+      inc_votes: "invalid",
+    };
+    return request(app)
+      .patch("/api/articles/1")
+      .send(invalidArticle)
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Bad Request");
+      });
+  });
+});
