@@ -143,3 +143,59 @@ describe("GET /api/articles/:article_id/comments", () => {
       });
   });
 });
+
+describe("POST /api/articles/:article_id/comments", () => {
+  test("201: responds with the newly created comment object for a pre-existing author", () => {
+    const newComment = {
+      username: "butter_bridge",
+      body: "I love cats",
+    };
+    return request(app)
+      .post("/api/articles/11/comments")
+      .send(newComment)
+      .expect(201)
+      .then(({ body }) => {
+        expect(body.comment).toMatchObject({
+          comment_id: expect.any(Number),
+          body: "I love cats",
+          article_id: 11,
+          author: "butter_bridge",
+          votes: 0,
+          created_at: expect.any(String),
+        });
+      });
+  });
+  test("201: responds with the newly created comment object for a new author", () => {
+    const newComment = {
+      username: "catslover",
+      body: "I really love cats",
+    };
+    return request(app)
+      .post("/api/articles/11/comments")
+      .send(newComment)
+      .expect(201)
+      .then(({ body }) => {
+        expect(body.comment).toMatchObject({
+          comment_id: expect.any(Number),
+          body: "I really love cats",
+          article_id: 11,
+          author: "catslover",
+          votes: 0,
+          created_at: expect.any(String),
+        });
+      });
+  });
+  test("400: responds with an error message for an invalid post request", () => {
+    const newInvalidComment = {
+      username: "",
+      body: "I love cats",
+    };
+    return request(app)
+      .post("/api/articles/11/comments")
+      .send(newInvalidComment)
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Bad Request");
+      });
+  });
+});
