@@ -1,13 +1,14 @@
 const {
-  checkCommentsExists,
+  checkCommentsExist,
   insertComment,
   removeComment,
 } = require("../models/comments.models");
+const { checkArticleExists } = require("../models/articles.models");
 
 exports.getCommentsByArticleId = (req, res, next) => {
   const { article_id } = req.params;
 
-  const promises = [checkCommentsExists(article_id)];
+  const promises = [checkCommentsExist(article_id)];
 
   Promise.all(promises)
     .then((resolvedPromises) => {
@@ -25,7 +26,10 @@ exports.postCommentForArticle = (req, res, next) => {
     return res.status(400).send({ msg: "Bad Request" });
   }
 
-  insertComment(article_id, username, body)
+  checkArticleExists(article_id)
+    .then(() => {
+      return insertComment(article_id, username, body);
+    })
     .then((newComment) => {
       res.status(201).send({ comment: newComment });
     })
