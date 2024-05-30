@@ -231,25 +231,25 @@ describe("POST /api/articles/:article_id/comments", () => {
         expect(body.msg).toBe("Bad Request");
       });
   });
-  test("400: responds with an error message for an invalid post request, for example missing username", () => {
-    const newInvalidComment = {
+  test("400: responds with Bad Request for an invalid post request, for example missing username", () => {
+    const invalidRequest = {
       body: "I love cats",
     };
     return request(app)
       .post("/api/articles/11/comments")
-      .send(newInvalidComment)
+      .send(invalidRequest)
       .expect(400)
       .then(({ body }) => {
         expect(body.msg).toBe("Bad Request");
       });
   });
-  test("400: responds with an error message for an invalid post request, for example missing body", () => {
-    const newInvalidComment = {
+  test("400: responds with Bad Request for an invalid post request, for example missing body", () => {
+    const invalidRequest = {
       username: "butter_bridge",
     };
     return request(app)
       .post("/api/articles/11/comments")
-      .send(newInvalidComment)
+      .send(invalidRequest)
       .expect(400)
       .then(({ body }) => {
         expect(body.msg).toBe("Bad Request");
@@ -301,13 +301,47 @@ describe("PATCH /api/articles/:article_id", () => {
         });
       });
   });
-  test("400: responds with an error message for an invalid inc_votes", () => {
-    const invalidArticle = {
+  test("404: responds with Not Found for a non-existent article_id", () => {
+    const updatedArticle = {
+      inc_votes: 1,
+    };
+    return request(app)
+      .patch("/api/articles/99999")
+      .send(updatedArticle)
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Not Found");
+      });
+  });
+  test("400: responds with Bad Request for an invalid article_id", () => {
+    const updatedArticle = {
+      inc_votes: 1,
+    };
+    return request(app)
+      .patch("/api/articles/not-an-id")
+      .send(updatedArticle)
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Bad Request");
+      });
+  });
+  test("400: responds with Bad Request for an invalid patch request, for example inc_votes in incorrect format", () => {
+    const invalidRequest = {
       inc_votes: "invalid",
     };
     return request(app)
       .patch("/api/articles/1")
-      .send(invalidArticle)
+      .send(invalidRequest)
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Bad Request");
+      });
+  });
+  test("400: responds with Bad Request for an invalid patch request, for example missing inc_votes", () => {
+    const invalidRequest = {};
+    return request(app)
+      .patch("/api/articles/1")
+      .send(invalidRequest)
       .expect(400)
       .then(({ body }) => {
         expect(body.msg).toBe("Bad Request");
@@ -327,7 +361,7 @@ describe("DELETE /api/comments/:comment_id", () => {
         expect(body.msg).toBe("Not Found");
       });
   });
-  test("400: responds with an error message for an invalid comment_id", () => {
+  test("400: responds with Bad Request for an invalid comment_id", () => {
     return request(app)
       .delete("/api/comments/invalid-id")
       .expect(400)
