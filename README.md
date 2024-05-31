@@ -2,10 +2,10 @@
 
 Hello there!
 
-Thank you for your interest in my project.
+Thank you for your interest in my first back-end project.
 
-To explore the hosted version of the API, simply follow [this link](https://be-nc-news-6djf.onrender.com/api/).  
-<small>Please note that since this project is on a free plan, there may be delays of 50 seconds or more due to inactivity causing the server to spin down.</small>
+You can explore the hosted version of the API [here](https://be-nc-news-6djf.onrender.com/api/).  
+Please note that since this project is on a free plan, there may be delays of 50 seconds or more due to inactivity causing the server to spin down. Thanks for your patience.
 
 ## Overview
 
@@ -65,6 +65,8 @@ To run the project locally, follow these steps:
    ```bash
    npm start
    ```
+
+Feel free to reach out if you have any questions or feedback!
 
 ---
 
