@@ -102,6 +102,42 @@ describe("GET /api/articles", () => {
         expect(body.msg).toBe("Not Found");
       });
   });
+  test("200: responds with articles sorted by any valid column (defaults to the created_at date)", () => {
+    return request(app)
+      .get("/api/articles?sort_by=title")
+      .expect(200)
+      .then(({ body }) => {
+        const { articles } = body;
+        expect(articles).toHaveLength(13);
+        expect(articles).toBeSortedBy("title", { descending: true });
+      });
+  });
+  test("400: responds with Bad Request if sort_by query is invalid", () => {
+    return request(app)
+      .get("/api/articles?sort_by=invalid")
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Bad Request");
+      });
+  });
+  test("200: responds with articles sorted by any valid column in the requested order (defaults to the created_at date DESC)", () => {
+    return request(app)
+      .get("/api/articles?sort_by=title&order=ASC")
+      .expect(200)
+      .then(({ body }) => {
+        const { articles } = body;
+        expect(articles).toHaveLength(13);
+        expect(articles).toBeSortedBy("title", { descending: false });
+      });
+  });
+  test("400: responds with Bad Request if order query is invalid", () => {
+    return request(app)
+      .get("/api/articles?order=invalid")
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Bad Request");
+      });
+  });
 });
 
 describe("GET /api/articles/:article_id", () => {
