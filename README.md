@@ -4,7 +4,8 @@ Hello there!
 
 Thank you for your interest in my project.
 
-To explore the hosted version of the API, simply follow [this link](https://be-nc-news-6djf.onrender.com/api/).
+To explore the hosted version of the API, simply follow [this link](https://be-nc-news-6djf.onrender.com/api/).  
+<small>Please note that since this project is on a free plan, there may be delays of 50 seconds or more due to inactivity causing the server to spin down.</small>
 
 ## Overview
 
