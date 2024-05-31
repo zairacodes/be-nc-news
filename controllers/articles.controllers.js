@@ -6,9 +6,9 @@ const {
 const { checkTopicExists } = require("../models/topics.models");
 
 exports.getArticles = (req, res, next) => {
-  const { topic } = req.query;
+  const { topic, sort_by, order } = req.query;
 
-  const promises = [fetchArticles(topic)];
+  const promises = [fetchArticles(topic, sort_by, order)];
 
   if (topic) {
     promises.push(checkTopicExists(topic));
