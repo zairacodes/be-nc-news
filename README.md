@@ -2,14 +2,68 @@
 
 Hello there!
 
-Thank you for your interest in my first back-end project.
+Thank you for your interest in my project.
 
-To get started and run the project locally, you will need to set up environment variables. Please follow these steps:
+To explore the hosted version of the API, simply follow [this link](https://be-nc-news-6djf.onrender.com/api/).
 
-1. **Create environment files**: create two `.env` files for your project, one named `.env.test` and another named `.env.development`
-2. **Configure databases**: into each file, add `PGDATABASE=` followed by the correct database name for that environment (please see `/db/setup.sql` for the correct database names)
-3. **Proceed with setup**: you're now ready to proceed with setting up and running the project!
+## Overview
+
+This project is a portfolio piece developed during a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/). The Northcoders News API serves as a platform for accessing and interacting with various articles, topics, comments and users, aiming to mimic a real-world backend service (such as [Reddit](https://www.reddit.com/)).
+
+## Getting Started
+
+### Minimum Requirements
+
+- Node.js: v21.7.2 or above
+- PostgreSQL: v14.11 or above
+
+### Installation guide
+
+To run the project locally, follow these steps:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/zairacodes/be-nc-news.git
+   cd be-nc-news
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up the environment variables**:
+
+   - Create two `.env` files for your project: `.env.test` and `.env.development`.
+   - In each file, add `PGDATABASE=` followed by the correct database name for that environment. Please refer to `/db/setup.sql` for the correct database names.
+   - Please make sure the `.env` files are added to `.gitignore`.
+
+4. **Set up the local databases**:
+
+   ```bash
+   npm run setup-dbs
+   ```
+
+5. **Seed the local development database**:
+
+   ```bash
+   npm run seed
+   ```
+
+6. **Run the tests**:
+
+   ```bash
+   npm test
+   ```
+
+7. **Start the server**:
+
+   ```bash
+   npm start
+   ```
 
 ---
 
-This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
+Made with ❤️ by [Zaira](https://www.linkedin.com/in/zaira-n/)
