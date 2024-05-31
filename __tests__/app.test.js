@@ -124,6 +124,15 @@ describe("GET /api/articles/:article_id", () => {
         });
       });
   });
+  test("200: comment_count reflects the actual number of comments for an article", () => {
+    return request(app)
+      .get("/api/articles/1")
+      .expect(200)
+      .then(({ body }) => {
+        const { article } = body;
+        expect(article.comment_count).toBe(11);
+      });
+  });
   test("404: responds with Not Found for a non-existent article_id", () => {
     return request(app)
       .get("/api/articles/99999")
