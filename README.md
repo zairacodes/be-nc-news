@@ -8,16 +8,17 @@ To explore the hosted version of the API, simply follow [this link](https://be-n
 
 ## Overview
 
-This project is a portfolio piece developed during a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/). The Northcoders News API serves as a platform for accessing and interacting with various articles, topics, comments and users, aiming to mimic a real-world backend service (such as [Reddit](https://www.reddit.com/)).
+This project is a portfolio piece developed during a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/).  
+The Northcoders News API serves as a platform for accessing and interacting with various articles, topics, comments and users, aiming to mimic a real-world backend service like [Reddit](https://www.reddit.com/).
 
 ## Getting Started
 
-### Minimum Requirements
+### Prerequisites
 
-- Node.js: v21.7.2 or above
-- PostgreSQL: v14.11 or above
+- [Node.js](https://nodejs.org/en/download/package-manager): v21.7.2 or above
+- [PostgreSQL](https://www.postgresql.org/download/): v14.11 or above
 
-### Installation guide
+### Installing
 
 To run the project locally, follow these steps:
 
@@ -36,7 +37,7 @@ To run the project locally, follow these steps:
 
 3. **Set up the environment variables**:
 
-   - Create two `.env` files for your project: `.env.test` and `.env.development`.
+   - Create two `.env` files in root directory: `.env.test` and `.env.development`.
    - In each file, add `PGDATABASE=` followed by the correct database name for that environment. Please refer to `/db/setup.sql` for the correct database names.
    - Please make sure the `.env` files are added to `.gitignore`.
 
