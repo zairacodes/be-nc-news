@@ -9,8 +9,8 @@ Please note that since this project is on a free plan, there may be delays of 50
 
 ## Overview
 
-This project is a portfolio piece developed during a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/).  
-The Northcoders News API serves as a platform for accessing and interacting with various articles, topics, comments and users, aiming to mimic a real-world backend service like [Reddit](https://www.reddit.com/).
+The Northcoders News API serves as a platform for accessing and interacting with various articles, topics, comments and users, aiming to mimic a real-world backend service like [Reddit](https://www.reddit.com/).  
+This API serves as the backend for the Northcoders News application, handling all server-side logic and database management. You can explore the front-end project [here](https://github.com/zairacodes/nc-news/) and the deployed app [here](https://ncnews-zaira.netlify.app/).
 
 ## Getting Started
 
@@ -69,5 +69,15 @@ To run the project locally, follow these steps:
 Feel free to reach out if you have any questions or feedback!
 
 ---
+
+Useful Links:
+
+- [API](https://be-nc-news-6djf.onrender.com/api/)
+- [Front-end Project](https://github.com/zairacodes/nc-news/)
+- [Front-end Application](https://ncnews-zaira.netlify.app/)
+
+---
+
+This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
 
 Made with ❤️ by [Zaira](https://www.linkedin.com/in/zaira-n/)
