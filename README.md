@@ -12,6 +12,10 @@ Please note that since this project is on a free plan, there may be delays of 50
 The Northcoders News API serves as a platform for accessing and interacting with various articles, topics, comments and users, aiming to mimic a real-world backend service like [Reddit](https://www.reddit.com/).  
 This API serves as the backend for the NC News application, handling all server-side logic and database management. You can explore the front-end project [here](https://github.com/zairacodes/nc-news/) and the deployed app [here](https://ncnews-zaira.netlify.app/).
 
+### API Endpoints Preview
+
+![be_nc_news](https://github.com/user-attachments/assets/ba4fa246-ad72-4aa4-ad82-8d2c473ea559)
+
 ## Tech Stack
 
 - **Testing**: Jest, Supertest (TDD)
